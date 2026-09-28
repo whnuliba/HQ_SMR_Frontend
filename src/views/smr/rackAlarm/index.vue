@@ -20,7 +20,7 @@
       >
         <template #tableTitle>
           <n-space>
-            <n-button type="primary" @click="batchUpdateState(2)">
+            <!-- <n-button type="primary" @click="batchUpdateState(2)">
               <template #icon>
                 <n-icon>
                   <CheckOutlined />
@@ -35,7 +35,7 @@
                 </n-icon>
               </template>
               批量忽略
-            </n-button>
+            </n-button>-->
             <n-button type="success" :loading="exportLoading" @click="handleExport">
               <template #icon>
                 <n-icon>
@@ -43,7 +43,7 @@
                 </n-icon>
               </template>
               导出Excel
-            </n-button>
+            </n-button> 
             <n-button type="info" @click="refreshData">
               <template #icon>
                 <n-icon>
@@ -198,12 +198,12 @@
           {
             label: '消除',
             onClick: handleUpdateState.bind(null, record, 2),
-            ifShow: () => record.handleState === 0 || record.handleState === 1,
+            ifShow: () => record.handleState === 0 ,
           },
           {
             label: '忽略',
             onClick: handleUpdateState.bind(null, record, 3),
-            ifShow: () => record.handleState === 0 || record.handleState === 1,
+            ifShow: () => record.handleState === 0,
           },
         ],
         dropDownActions: [],
@@ -246,14 +246,14 @@
       
       const response = await exportRackAlarm({
         requestData: {
-          ...searchParams,
-          pageSize: 999999,
-          pageIndex: 1,
-        }
+          ...searchParams 
+        },pageSize: 999999,
+          page: 1,
+          current: 1
       });
 
-      if (response.code === 200 && response.data && response.data.list) {
-        const list = response.data.list;
+      if (response.code === 200 && response.data && response.data.data) {
+        const list = response.data.data;
         
         if (!list || list.length === 0) {
           message.warning('没有数据可导出');

@@ -23,8 +23,6 @@ export function exportRackAlarm(params) {
       ...params,
       requestData: {
         ...params.requestData,
-        pageSize: 999999, // 放大分页尺寸以获取全部数据
-        pageIndex: 1,
       }
     },
     {

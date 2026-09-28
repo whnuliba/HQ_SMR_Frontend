@@ -20,14 +20,14 @@
       >
         <template #tableTitle>
           <n-space>
-            <n-button type="error" @click="handleBatchDelete">
+            <!-- <n-button type="error" @click="handleBatchDelete">
               <template #icon>
                 <n-icon>
                   <DeleteOutlined />
                 </n-icon>
               </template>
               批量删除
-            </n-button>
+            </n-button> -->
             <n-button type="success" :loading="exportLoading" @click="handleExport">
               <template #icon>
                 <n-icon>
@@ -145,11 +145,11 @@
             onClick: handleViewDetail.bind(null, record),
             ifShow: () => true,
           },
-          {
-            label: '删除',
-            onClick: handleDelete.bind(null, record),
-            ifShow: () => true,
-          },
+          // {
+          //   label: '删除',
+          //   onClick: handleDelete.bind(null, record),
+          //   ifShow: () => true,
+          // },
         ],
         dropDownActions: [],
         select: (key) => {
@@ -192,13 +192,14 @@
       const response = await exportRackRunningLog({
         requestData: {
           ...searchParams,
-          pageSize: 999999,
-          pageIndex: 1,
         }
+         ,pageSize: 100000,
+          page: 1,
+          current: 1
       });
 
-      if (response.code === 200 && response.data && response.data.list) {
-        const list = response.data.list;
+      if (response.code === 200 && response.data && response.data.data) {
+        const list = response.data.data;
         
         if (!list || list.length === 0) {
           message.warning('没有数据可导出');

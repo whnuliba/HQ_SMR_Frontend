@@ -140,7 +140,9 @@
         }
         const params = {
           isLock: true,
-          ...state.loginParams,
+          data: {
+            ...state.loginParams,
+          },
         };
         state.loginLoading = true;
         const { code, message } = await userStore.login(params);

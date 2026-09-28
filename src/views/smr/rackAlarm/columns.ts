@@ -78,7 +78,7 @@ export const alarmTypeTagType: Record<number, string> = {
 // 处理状态映射
 export const handleStateMap: Record<number, string> = {
   0: '待处理',
-  1: '处理中',
+  1: '已处理',
   2: '已处理',
   3: '已忽略',
 };

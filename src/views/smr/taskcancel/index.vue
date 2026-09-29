@@ -119,16 +119,16 @@
       componentProps: {
         placeholder: '请选择类型',
         options: [
-          {
+         {
             label: '入库等待',
             value: 0,
           },
           {
-            label: '入库完成',
+            label: '出库等待',
             value: 1,
           },
            {
-            label: '出库完成',
+            label: '入库完成',
             value: 2,
           },     
           {

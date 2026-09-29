@@ -23,7 +23,7 @@ export interface RackTaskData {
 
 const taskState = {
   0: '上架等待',
-  1: '下架完成',
+  1: '下架等待',
   2: '上架完成',
   3: '下架完成'
 };
@@ -64,7 +64,7 @@ export const columns: BasicColumn<RackTaskData>[] = [
   },
   {
     title: '储位',
-    key: 'location',
+    key: 'locations',
   },
   {
     title: '任务类型',

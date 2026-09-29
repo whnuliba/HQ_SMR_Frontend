@@ -1,7 +1,7 @@
 import { RouteRecordRaw } from 'vue-router';
 import { Layout } from '@/router/constant';
 import {
-  DatabaseOutlined,        // 物料信息
+  DatabaseOutlined,        // 物料统计
 } from '@vicons/antd';
 import { renderIcon } from '@/utils/index';
 

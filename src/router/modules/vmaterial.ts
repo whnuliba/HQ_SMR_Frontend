@@ -12,7 +12,7 @@ const routes: Array<RouteRecordRaw> = [
     redirect: '/smr/vmaterial',
     component: Layout,
     meta: {
-      title: '物料信息',
+      title: '物料统计',
       icon: renderIcon(DatabaseOutlined),
       sort: 3,
     },
@@ -21,7 +21,7 @@ const routes: Array<RouteRecordRaw> = [
         path: 'vmaterial',
         name: 'vmaterial',
         meta: {
-          title: '物料信息',
+          title: '物料统计',
         },
         component: () => import('@/views/smr/vmaterial/index.vue'),
       }

@@ -167,6 +167,13 @@
   import { ReloadOutlined } from '@vicons/antd';
   import CodeEditor from '@/components/CodeEditor/index.vue';
 
+  // 格式化时间戳为 yyyy-MM-dd HH:mm:ss
+  function formatTimestamp(timestamp: number): string {
+    const date = new Date(timestamp);
+    const pad = (n: number) => n.toString().padStart(2, '0');
+    return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())} ${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}`;
+  }
+
   // ==================== 接口日志 Tab ====================
   const actionRefCurrent = ref();
   const showDetailModal = ref(false);
@@ -177,14 +184,14 @@
   const statusLoading = ref(false);
 
   const schemasCurrent: FormSchema[] = [
-    {
-      field: 'operateType',
-      component: 'NInput',
-      label: '操作类型',
-      componentProps: {
-        placeholder: '请输入操作类型',
-      },
-    },
+    // {
+    //   field: 'operateType',
+    //   component: 'NInput',
+    //   label: '操作类型',
+    //   componentProps: {
+    //     placeholder: '请输入操作类型',
+    //   },
+    // },
     {
       field: 'rackId',
       component: 'NInput',
@@ -193,30 +200,30 @@
         placeholder: '请输入料架编号',
       },
     },
-    {
-      field: 'taskId',
-      component: 'NInput',
-      label: '任务ID',
-      componentProps: {
-        placeholder: '请输入任务ID',
-      },
-    },
-    {
-      field: 'ppId',
-      component: 'NInput',
-      label: 'PPID',
-      componentProps: {
-        placeholder: '请输入PPID',
-      },
-    },
-    {
-      field: 'requestId',
-      component: 'NInput',
-      label: '请求ID',
-      componentProps: {
-        placeholder: '请输入请求ID',
-      },
-    },
+    // {
+    //   field: 'taskId',
+    //   component: 'NInput',
+    //   label: '任务ID',
+    //   componentProps: {
+    //     placeholder: '请输入任务ID',
+    //   },
+    // },
+    // {
+    //   field: 'ppId',
+    //   component: 'NInput',
+    //   label: 'PPID',
+    //   componentProps: {
+    //     placeholder: '请输入PPID',
+    //   },
+    // },
+    // {
+    //   field: 'requestId',
+    //   component: 'NInput',
+    //   label: '请求ID',
+    //   componentProps: {
+    //     placeholder: '请输入请求ID',
+    //   },
+    // },
     {
       field: 'timeRange',
       component: 'NDatePicker',
@@ -258,8 +265,8 @@
     const requestData: any = { ...fieldsValue };
     // 处理时间范围
     if (fieldsValue.timeRange && fieldsValue.timeRange.length === 2) {
-      requestData.beginTime = fieldsValue.timeRange[0];
-      requestData.endTime = fieldsValue.timeRange[1];
+      requestData.beginTime = formatTimestamp(fieldsValue.timeRange[0]);
+      requestData.endTime = formatTimestamp(fieldsValue.timeRange[1]);
     }
     delete requestData.timeRange;
     return await getDispatchMessageList({ requestData, ...res });
@@ -338,14 +345,14 @@
   const currentRecordHis = ref<DispatchMessageData | null>(null);
 
   const schemasHis: FormSchema[] = [
-    {
-      field: 'operateType',
-      component: 'NInput',
-      label: '操作类型',
-      componentProps: {
-        placeholder: '请输入操作类型',
-      },
-    },
+    // {
+    //   field: 'operateType',
+    //   component: 'NInput',
+    //   label: '操作类型',
+    //   componentProps: {
+    //     placeholder: '请输入操作类型',
+    //   },
+    // },
     {
       field: 'rackId',
       component: 'NInput',
@@ -354,30 +361,30 @@
         placeholder: '请输入料架编号',
       },
     },
-    {
-      field: 'taskId',
-      component: 'NInput',
-      label: '任务ID',
-      componentProps: {
-        placeholder: '请输入任务ID',
-      },
-    },
-    {
-      field: 'ppId',
-      component: 'NInput',
-      label: 'PPID',
-      componentProps: {
-        placeholder: '请输入PPID',
-      },
-    },
-    {
-      field: 'requestId',
-      component: 'NInput',
-      label: '请求ID',
-      componentProps: {
-        placeholder: '请输入请求ID',
-      },
-    },
+    // {
+    //   field: 'taskId',
+    //   component: 'NInput',
+    //   label: '任务ID',
+    //   componentProps: {
+    //     placeholder: '请输入任务ID',
+    //   },
+    // },
+    // {
+    //   field: 'ppId',
+    //   component: 'NInput',
+    //   label: 'PPID',
+    //   componentProps: {
+    //     placeholder: '请输入PPID',
+    //   },
+    // },
+    // {
+    //   field: 'requestId',
+    //   component: 'NInput',
+    //   label: '请求ID',
+    //   componentProps: {
+    //     placeholder: '请输入请求ID',
+    //   },
+    // },
     {
       field: 'timeRange',
       component: 'NDatePicker',
@@ -419,8 +426,8 @@
     const requestData: any = { ...fieldsValue };
     // 处理时间范围
     if (fieldsValue.timeRange && fieldsValue.timeRange.length === 2) {
-      requestData.beginTime = fieldsValue.timeRange[0];
-      requestData.endTime = fieldsValue.timeRange[1];
+      requestData.beginTime = formatTimestamp(fieldsValue.timeRange[0]);
+      requestData.endTime = formatTimestamp(fieldsValue.timeRange[1]);
     }
     delete requestData.timeRange;
     return await getDispatchMessageHisList({ requestData, ...res });

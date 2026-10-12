@@ -81,9 +81,7 @@
   import { PlusOutlined } from '@vicons/antd';
   import { useRouter } from 'vue-router';
   import { type FormRules } from 'naive-ui';
-  import { useDialog, useMessage } from 'naive-ui'
-import { N } from 'vue-router/dist/router-CWoNjPRp.mjs';
-
+  import { useDialog, useMessage } from 'naive-ui';
 
 const message = useMessage()
  const dialog = useDialog()

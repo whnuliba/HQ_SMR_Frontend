@@ -11,6 +11,7 @@ declare module '@vue/runtime-core' {
     BasicForm: typeof import('./src/components/Form/src/BasicForm.vue')['default']
     BasicModal: typeof import('./src/components/Modal/src/basicModal.vue')['default']
     BasicUpload: typeof import('./src/components/Upload/src/BasicUpload.vue')['default']
+    CodeEditor: typeof import('./src/components/CodeEditor/index.vue')['default']
     ColumnSetting: typeof import('./src/components/Table/src/components/settings/ColumnSetting.vue')['default']
     CountTo: typeof import('./src/components/CountTo/CountTo.vue')['default']
     EditableCell: typeof import('./src/components/Table/src/components/editable/EditableCell.vue')['default']

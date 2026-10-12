@@ -15,7 +15,7 @@ const routes: Array<RouteRecordRaw> = [
     meta: {
       title: 'WMS操作',
       icon: renderIcon(ArrowUpOutlined),
-      permissions:['role.administrator','role.production','user'], 
+      permissions:['role.administrator','user'], 
 
     },
     children: [

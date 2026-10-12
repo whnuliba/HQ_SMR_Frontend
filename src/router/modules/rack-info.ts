@@ -27,6 +27,7 @@ const routes: Array<RouteRecordRaw> = [
         name: 'rack',
         meta: {
           title: '货架信息',
+           permissions:['role.administrator','role.production','user'], 
         },
         component: () => import('@/views/smr/rack/index.vue'),
       }
@@ -50,6 +51,7 @@ const routes: Array<RouteRecordRaw> = [
         meta: {
           title: '物料信息',
           icon: renderIcon(FileOutlined),
+          permissions:['role.administrator','role.production','user'], 
         },
         component: () => import('@/views/smr/material/index.vue'),
       },
@@ -88,6 +90,7 @@ const routes: Array<RouteRecordRaw> = [
       title: '货架报警',
       icon: renderIcon(FileTextOutlined ),
       sort: 2,
+      permissions:['role.administrator','role.production','user'],  
     },
     children: [
  {

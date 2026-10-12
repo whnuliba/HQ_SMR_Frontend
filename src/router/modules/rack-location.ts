@@ -15,6 +15,7 @@ const routes: Array<RouteRecordRaw> = [
       title: '料架信息',
       icon: renderIcon(AppstoreOutlined),
       sort: 2,
+          permissions:['role.administrator','role.production','user'],  
     },
     children: [
       {

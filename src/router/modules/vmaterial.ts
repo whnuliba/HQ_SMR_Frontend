@@ -15,6 +15,8 @@ const routes: Array<RouteRecordRaw> = [
       title: '物料统计',
       icon: renderIcon(DatabaseOutlined),
       sort: 3,
+      permissions:['role.administrator','role.production','user'], 
+
     },
     children: [
       {

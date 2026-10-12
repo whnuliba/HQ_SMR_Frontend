@@ -17,6 +17,7 @@ const routes: Array<RouteRecordRaw> = [
       title: '任务信息',
       icon: renderIcon(ProfileOutlined ),
       sort: 2,
+      permissions:['role.administrator','role.production','user'],  
     },
     children: [
       {

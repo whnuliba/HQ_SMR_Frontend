@@ -14,6 +14,7 @@ const routes: Array<RouteRecordRaw> = [
       title: '设备操作',
       icon: renderIcon(DesktopOutlined  ),
       sort: 2,
+     permissions:['role.administrator','role.production','user'], 
     },
     children: [
       {
@@ -21,6 +22,7 @@ const routes: Array<RouteRecordRaw> = [
         name: 'deviceCtrlForm',
         meta: {
           title: '设备操作',
+
         },
         component: () => import('@/views/smr/deviceCtrlForm/index.vue'),
       }

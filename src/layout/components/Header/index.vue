@@ -126,6 +126,25 @@
   </div>
   <!--项目配置-->
   <ProjectSetting ref="drawerSetting" />
+
+  <!--修改密码弹窗-->
+  <n-modal v-model:show="showPasswordModal" preset="dialog" title="修改密码">
+    <n-form label-placement="left" label-width="100" style="width: 400px">
+      <n-form-item label="原密码" required>
+        <n-input v-model:value="passwordForm.password" type="password" show-password-on="click" placeholder="请输入原密码" />
+      </n-form-item>
+      <n-form-item label="新密码" required>
+        <n-input v-model:value="passwordForm.newPassword" type="password" show-password-on="click" placeholder="请输入新密码" />
+      </n-form-item>
+      <n-form-item label="确认新密码" required>
+        <n-input v-model:value="confirmPassword" type="password" show-password-on="click" placeholder="请再次输入新密码" />
+      </n-form-item>
+    </n-form>
+    <template #action>
+      <n-button @click="showPasswordModal = false">取消</n-button>
+      <n-button type="primary" @click="handleChangePassword" :loading="passwordLoading">确定</n-button>
+    </template>
+  </n-modal>
 </template>
 
 <script lang="ts">
@@ -141,6 +160,7 @@
   import { useRoute, useRouter } from 'vue-router';
   import components from './components';
   import ProjectSetting from './ProjectSetting.vue';
+  import { changePassword } from '@/api/system/user';
 
   export default defineComponent({
     name: 'PageHeader',
@@ -162,6 +182,16 @@
       const { navMode, navTheme, headerSetting, menuSetting, crumbsSetting } = useProjectSetting();
 
       const drawerSetting = ref();
+
+      // 修改密码相关
+      const showPasswordModal = ref(false);
+      const passwordLoading = ref(false);
+      const passwordForm = reactive({
+        userName: '',
+        password: '',
+        newPassword: '',
+      });
+      const confirmPassword = ref('');
 
       const state = reactive({
         username: userStore?.info?.username ?? '',
@@ -301,6 +331,10 @@
           key: 1,
         },
         {
+          label: '修改密码',
+          key: 3,
+        },
+        {
           label: '退出登录',
           key: 2,
         },
@@ -315,6 +349,54 @@
           case 2:
             doLogout();
             break;
+          case 3:
+            handleOpenPasswordModal();
+            break;
+        }
+      };
+
+      // 打开修改密码弹窗
+      const handleOpenPasswordModal = () => {
+        passwordForm.userName = userStore?.info?.username ?? '';
+        passwordForm.password = '';
+        passwordForm.newPassword = '';
+        confirmPassword.value = '';
+        showPasswordModal.value = true;
+      };
+
+      // 修改密码
+      const handleChangePassword = async () => {
+        if (!passwordForm.password) {
+          message.warning('请输入原密码');
+          return;
+        }
+        if (!passwordForm.newPassword) {
+          message.warning('请输入新密码');
+          return;
+        }
+        if (!confirmPassword.value) {
+          message.warning('请输入确认密码');
+          return;
+        }
+        if (passwordForm.newPassword !== confirmPassword.value) {
+          message.warning('两次输入的新密码不一致');
+          return;
+        }
+        passwordLoading.value = true;
+        try {
+          const res = await changePassword({data:{
+            userName: passwordForm.userName,
+            password: passwordForm.password,
+            newPassword: passwordForm.newPassword,
+          }});
+          if (res.code === 200) {
+            message.success('密码修改成功');
+            showPasswordModal.value = false;
+          } else {
+            message.error(res.message || res.data || '密码修改失败');
+          }
+        } finally {
+          passwordLoading.value = false;
         }
       };
 
@@ -347,6 +429,10 @@
         websiteConfig,
         handleMenuCollapsed,
         RedirectName,
+        showPasswordModal,
+        passwordForm,
+        confirmPassword,
+        handleChangePassword,
       };
     },
   });

@@ -31,8 +31,14 @@ export function login(params) {
 /**
  * @description: 用户修改密码
  */
-export function changePassword(params, uid) {
-  return Alova.Post(`/user/u${uid}/changepw`, { params });
+export function changePassword(params) {
+  return Alova.Post<BasicFmsResponseModel>(
+    '/user/UpdatePwd',
+    { ...params },
+    {
+      meta: { isReturnNativeResponse: true },
+    }
+  );
 }
 
 /**

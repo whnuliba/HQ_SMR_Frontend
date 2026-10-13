@@ -64,18 +64,20 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       // 构建分包策略
       rollupOptions: {
         output: {
-          manualChunks: {
-            'naive-ui': ['naive-ui'],
-            'lodash-es': ['lodash-es'],
-            'vue-router': ['vue-router'],
-            'vue-quill': ['@vueup/vue-quill'],
-            'vicons-antd': ['@vicons/antd'],
-            'vicons-ionicons5': ['@vicons/ionicons5'],
-            vuedraggable: ['vuedraggable'],
-            echarts: ['echarts'],
-            vueuse: ['@vueuse/core'],
-            vue: ['vue'],
-            pinia: ['pinia'],
+          manualChunks(id) {
+            if (id.includes('node_modules')) {
+              if (id.includes('naive-ui')) return 'naive-ui';
+              if (id.includes('lodash-es')) return 'lodash-es';
+              if (id.includes('vue-router')) return 'vue-router';
+              if (id.includes('@vueup/vue-quill')) return 'vue-quill';
+              if (id.includes('@vicons/antd')) return 'vicons-antd';
+              if (id.includes('@vicons/ionicons5')) return 'vicons-ionicons5';
+              if (id.includes('vuedraggable')) return 'vuedraggable';
+              if (id.includes('echarts')) return 'echarts';
+              if (id.includes('@vueuse/core')) return 'vueuse';
+              if (id.includes('vue/')) return 'vue';
+              if (id.includes('pinia')) return 'pinia';
+            }
           },
         },
       },

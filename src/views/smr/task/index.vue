@@ -205,7 +205,7 @@
             onClick: handleDelete.bind(null, record),
             // 根据业务控制是否显示 isShow 和 auth 是并且关系
             ifShow: () => {
-              return true;
+              return record.taskState==0 &&record.taskState==1? true:false;
             },
             // 根据权限控制是否显示: 有权限，会显示，支持多个
             //auth: ['basic_list'],
@@ -214,7 +214,7 @@
             label: '完成',
             onClick: handleEdit.bind(null, record),
             ifShow: () => {
-              return true;
+              return record.taskState==0 &&record.taskState==1? true:false;
             },
             //auth: ['basic_list'],
           },

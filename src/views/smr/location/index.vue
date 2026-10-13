@@ -166,7 +166,7 @@ const message = useMessage()
       
     },
      {
-      field: 'localtion',
+      field: 'location',
       labelMessage: '储位',
       component: 'NInput',
       label: '储位',

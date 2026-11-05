@@ -1,7 +1,7 @@
 <template>
   <div class="device-ctrl-container">
     <h2 class="page-title">设备控制面板</h2>
-    
+
     <n-grid :cols="2" :x-gap="16" :y-gap="16">
       <!-- 测试模式 -->
       <n-grid-item>
@@ -28,7 +28,6 @@
               <n-button type="primary" @click="handleTest">发送</n-button>
             </n-form-item>
           </n-form>
-          <!-- 返回结果 -->
           <div v-if="testResult" class="result-area">
             <n-divider />
             <div class="result-content">
@@ -75,7 +74,6 @@
               <n-button type="primary" @click="handleSingleLightFlashing">发送</n-button>
             </n-form-item>
           </n-form>
-          <!-- 返回结果 -->
           <div v-if="singleLightFlashingResult" class="result-area">
             <n-divider />
             <div class="result-content">
@@ -119,7 +117,6 @@
               <n-button type="primary" @click="handleLightAllLoop">发送</n-button>
             </n-form-item>
           </n-form>
-          <!-- 返回结果 -->
           <div v-if="lightAllLoopResult" class="result-area">
             <n-divider />
             <div class="result-content">
@@ -169,7 +166,6 @@
               <n-button type="primary" @click="handleLightOneLoopByColor">发送</n-button>
             </n-form-item>
           </n-form>
-          <!-- 返回结果 -->
           <div v-if="lightOneLoopByColorResult" class="result-area">
             <n-divider />
             <div class="result-content">
@@ -223,7 +219,6 @@
               <n-button type="primary" @click="handleLightOneLoop">发送</n-button>
             </n-form-item>
           </n-form>
-          <!-- 返回结果 -->
           <div v-if="lightOneLoopResult" class="result-area">
             <n-divider />
             <div class="result-content">
@@ -264,7 +259,6 @@
               <n-button type="primary" @click="handleLightAll">发送</n-button>
             </n-form-item>
           </n-form>
-          <!-- 返回结果 -->
           <div v-if="lightAllResult" class="result-area">
             <n-divider />
             <div class="result-content">
@@ -298,7 +292,6 @@
               <n-button type="warning" @click="handleDownAll">发送</n-button>
             </n-form-item>
           </n-form>
-          <!-- 返回结果 -->
           <div v-if="downAllResult" class="result-area">
             <n-divider />
             <div class="result-content">
@@ -342,7 +335,6 @@
               <n-button type="primary" @click="handleLightSingle">发送</n-button>
             </n-form-item>
           </n-form>
-          <!-- 返回结果 -->
           <div v-if="lightSingleResult" class="result-area">
             <n-divider />
             <div class="result-content">
@@ -379,7 +371,6 @@
               <n-button type="warning" @click="handleDownSingle">发送</n-button>
             </n-form-item>
           </n-form>
-          <!-- 返回结果 -->
           <div v-if="downSingleResult" class="result-area">
             <n-divider />
             <div class="result-content">
@@ -423,7 +414,6 @@
               <n-button type="primary" @click="handleLightMulti">发送</n-button>
             </n-form-item>
           </n-form>
-          <!-- 返回结果 -->
           <div v-if="lightMultiResult" class="result-area">
             <n-divider />
             <div class="result-content">
@@ -460,7 +450,6 @@
               <n-button type="warning" @click="handleDownMulti">发送</n-button>
             </n-form-item>
           </n-form>
-          <!-- 返回结果 -->
           <div v-if="downMultiResult" class="result-area">
             <n-divider />
             <div class="result-content">
@@ -508,7 +497,6 @@
               <n-button type="primary" @click="handleAlarmLight">发送</n-button>
             </n-form-item>
           </n-form>
-          <!-- 返回结果 -->
           <div v-if="alarmLightResult" class="result-area">
             <n-divider />
             <div class="result-content">
@@ -556,7 +544,6 @@
               <n-button type="warning" @click="handleAlarmDown">发送</n-button>
             </n-form-item>
           </n-form>
-          <!-- 返回结果 -->
           <div v-if="alarmDownResult" class="result-area">
             <n-divider />
             <div class="result-content">
@@ -604,7 +591,6 @@
               <n-button type="primary" @click="handleAlarmLightFlashing">发送</n-button>
             </n-form-item>
           </n-form>
-          <!-- 返回结果 -->
           <div v-if="alarmLightFlashingResult" class="result-area">
             <n-divider />
             <div class="result-content">
@@ -649,12 +635,11 @@
               />
             </n-form-item>
             <n-form-item label="指令类型">
-                          <n-select
+              <n-select
                 v-model:value="alarmCancelForm.length"
                 :options="alarmMode"
                 placeholder="请选择指令类型"
               />
-              <!-- <n-input-number v-model:value="alarmCancelForm.length" placeholder="请输入储位数目" /> -->
             </n-form-item>
             <n-form-item label="储位">
               <n-input v-model:value="alarmCancelForm.addrs" placeholder="储位用;分隔" />
@@ -663,7 +648,6 @@
               <n-button type="warning" @click="handleAlarmCancel">发送</n-button>
             </n-form-item>
           </n-form>
-          <!-- 返回结果 -->
           <div v-if="alarmCancelResult" class="result-area">
             <n-divider />
             <div class="result-content">
@@ -697,7 +681,6 @@
               <n-button type="primary" @click="handleGetAddrStatus">发送</n-button>
             </n-form-item>
           </n-form>
-          <!-- 返回结果 -->
           <div v-if="getAddrStatusResult" class="result-area">
             <n-divider />
             <div class="result-content">
@@ -731,7 +714,6 @@
               <n-button type="primary" @click="handleQueryInitInfo">发送</n-button>
             </n-form-item>
           </n-form>
-          <!-- 返回结果 -->
           <div v-if="queryInitInfoResult" class="result-area">
             <n-divider />
             <div class="result-content">
@@ -741,6 +723,113 @@
               </n-tag>
               <n-text v-if="queryInitInfoResult.data" code class="result-data">
                 {{ JSON.stringify(queryInitInfoResult.data) }}
+              </n-text>
+            </div>
+          </div>
+        </n-card>
+      </n-grid-item>
+
+      <!-- 一级板初始化 -->
+      <n-grid-item>
+        <n-card title="一级板初始化" :bordered="true" size="small">
+          <n-form :model="firstBoardInitForm" label-placement="left" label-width="110px">
+            <n-form-item label="货架编号">
+              <n-select
+                v-model:value="firstBoardInitForm.rackNo"
+                :options="rackOptions"
+                filterable
+                clearable
+                placeholder="请选择或搜索货架编号"
+                :loading="rackLoading"
+              />
+            </n-form-item>
+            <n-form-item label="是否感应">
+              <n-switch v-model:value="firstBoardInitForm.isInductive">
+                <template #checked>启用</template>
+                <template #unchecked>禁用</template>
+              </n-switch>
+            </n-form-item>
+            <n-form-item label="服务器IP">
+              <n-input v-model:value="firstBoardInitForm.serverIP" placeholder="如 192.168.1.100" />
+            </n-form-item>
+            <n-form-item label="服务器端口">
+              <n-input-number
+                v-model:value="firstBoardInitForm.serverPort"
+                :min="1"
+                :max="65535"
+                placeholder="请输入端口号"
+                style="width: 100%"
+              />
+            </n-form-item>
+            <n-form-item label="颜色列表">
+              <div class="color-list-wrap">
+                <div
+                  v-for="(color, idx) in firstBoardInitForm.colors"
+                  :key="idx"
+                  class="color-row"
+                >
+                  <n-input-number
+                    v-model:value="color.R"
+                    :min="0"
+                    :max="255"
+                    size="small"
+                    placeholder="R"
+                    style="width: 80px"
+                  />
+                  <n-input-number
+                    v-model:value="color.G"
+                    :min="0"
+                    :max="255"
+                    size="small"
+                    placeholder="G"
+                    style="width: 80px"
+                  />
+                  <n-input-number
+                    v-model:value="color.B"
+                    :min="0"
+                    :max="255"
+                    size="small"
+                    placeholder="B"
+                    style="width: 80px"
+                  />
+                  <n-button size="tiny" type="error" ghost @click="removeColor(idx)">删除</n-button>
+                </div>
+                <n-button size="tiny" dashed type="primary" @click="addColor">+ 添加颜色</n-button>
+              </div>
+            </n-form-item>
+            <n-form-item label="二级板灯珠数">
+              <div class="led-qty-wrap">
+                <div
+                  v-for="(qty, idx) in firstBoardInitForm.ledQtyPerSecondBoard"
+                  :key="idx"
+                  class="led-qty-row"
+                >
+                  <n-input-number
+                    v-model:value="firstBoardInitForm.ledQtyPerSecondBoard[idx]"
+                    :min="0"
+                    :max="65535"
+                    size="small"
+                    placeholder="灯珠数"
+                    style="width: 120px"
+                  />
+                  <n-button size="tiny" type="error" ghost @click="removeLedQty(idx)">删除</n-button>
+                </div>
+                <n-button size="tiny" dashed type="primary" @click="addLedQty">+ 添加二级板</n-button>
+              </div>
+            </n-form-item>
+            <n-form-item>
+              <n-button type="primary" @click="handleFirstBoardInit">发送</n-button>
+            </n-form-item>
+          </n-form>
+          <div v-if="firstBoardInitResult" class="result-area">
+            <n-divider />
+            <div class="result-content">
+              <span class="result-label">返回结果：</span>
+              <n-tag :type="firstBoardInitResult.success ? 'success' : 'error'">
+                {{ firstBoardInitResult.message }}
+              </n-tag>
+              <n-text v-if="firstBoardInitResult.data" code class="result-data">
+                {{ JSON.stringify(firstBoardInitResult.data) }}
               </n-text>
             </div>
           </div>
@@ -782,7 +871,8 @@ import type {
   CancelDownInductiveShelfRequest,
   AlarmRequest,
   Rack,
-}  from '@/components/Form/index';
+  FirstBoardInitRequest,
+} from '@/components/Form/index';
 
 // 定义响应结果类型
 interface ResultState {
@@ -812,7 +902,6 @@ const colorOptions = [
   { label: '红色', value: 1 },
   { label: '白色', value: 2 },
   { label: '绿色', value: 3 },
-
 ];
 
 const alarmMode = [
@@ -867,6 +956,19 @@ const alarmLightFlashingForm = reactive<AlarmLightFlashingRequest>({ rackNo: '',
 const getAddrStatusForm = reactive<GetAddrStatusRequest>({ rackNo: '' });
 const queryInitInfoForm = reactive<QueryInitInfoRequest>({ rackNo: '' });
 
+// 一级板初始化表单
+const firstBoardInitForm = reactive<FirstBoardInitRequest>({
+  rackNo: '',
+  colors: [
+    { R: 255, G: 0, B: 0 },
+    { R: 0, G: 255, B: 0 },
+  ],
+  isInductive: true,
+  serverIP: '192.168.1.100',
+  serverPort: 9000,
+  ledQtyPerSecondBoard: [64],
+});
+
 // 结果数据
 const testResult = ref<ResultState | null>(null);
 const singleLightFlashingResult = ref<ResultState | null>(null);
@@ -885,6 +987,7 @@ const alarmCancelResult = ref<ResultState | null>(null);
 const alarmLightFlashingResult = ref<ResultState | null>(null);
 const getAddrStatusResult = ref<ResultState | null>(null);
 const queryInitInfoResult = ref<ResultState | null>(null);
+const firstBoardInitResult = ref<ResultState | null>(null);
 
 /**
  * 获取货架列表
@@ -915,8 +1018,8 @@ onMounted(() => {
 
 // 通用请求处理
 const handleRequest = async (
-  apiFn: (data: any) => Promise<any>, 
-  data: any, 
+  apiFn: (data: any) => Promise<any>,
+  data: any,
   successMsg: string,
   resultRef: any
 ) => {
@@ -948,31 +1051,31 @@ const handleRequest = async (
 };
 
 // 各接口处理函数
-const handleTest = () => 
+const handleTest = () =>
   handleRequest(deviceApi.testMode, testForm, '切换测试模式成功', testResult);
 
-const handleSingleLightFlashing = () => 
+const handleSingleLightFlashing = () =>
   handleRequest(deviceApi.singleLightFlashing, singleLightFlashingForm, '单灯闪烁请求已发送', singleLightFlashingResult);
 
-const handleLightAllLoop = () => 
+const handleLightAllLoop = () =>
   handleRequest(deviceApi.lightAllLoop, lightAllLoopForm, '循环全亮/灭请求已发送', lightAllLoopResult);
 
-const handleLightOneLoopByColor = () => 
+const handleLightOneLoopByColor = () =>
   handleRequest(deviceApi.lightOneLoopByColor, lightOneLoopByColorForm, '多彩灯亮/灭请求已发送', lightOneLoopByColorResult);
 
-const handleLightOneLoop = () => 
+const handleLightOneLoop = () =>
   handleRequest(deviceApi.lightOneLoop, lightOneLoopForm, '单灯亮/灭请求已发送', lightOneLoopResult);
 
-const handleLightAll = () => 
+const handleLightAll = () =>
   handleRequest(deviceApi.lightAll, lightAllForm, '所有灯全亮请求已发送', lightAllResult);
 
-const handleDownAll = () => 
+const handleDownAll = () =>
   handleRequest(deviceApi.downAll, downAllForm, '所有灯全灭请求已发送', downAllResult);
 
-const handleLightSingle = () => 
+const handleLightSingle = () =>
   handleRequest(deviceApi.lightSingle, lightSingleForm, '单灯亮请求已发送', lightSingleResult);
 
-const handleDownSingle = () => 
+const handleDownSingle = () =>
   handleRequest(deviceApi.downSingle, downSingleForm, '单灯灭请求已发送', downSingleResult);
 
 const handleLightMulti = () => {
@@ -980,7 +1083,6 @@ const handleLightMulti = () => {
     message.warning('请添加至少一个地址');
     return;
   }
-  // 验证排序
   const sorted = [...lightMultiForm.ledAddrs].sort((a, b) => a - b);
   if (JSON.stringify(lightMultiForm.ledAddrs) !== JSON.stringify(sorted)) {
     message.warning('地址列表必须从小到大排序');
@@ -1010,23 +1112,88 @@ const handleDownMulti = () => {
   handleRequest(deviceApi.downMulti, downMultiForm, '多灯灭请求已发送', downMultiResult);
 };
 
-const handleAlarmLight = () => 
+const handleAlarmLight = () =>
   handleRequest(deviceApi.alarmLight, alarmLightForm, '大灯亮/蜂鸣器响请求已发送', alarmLightResult);
 
-const handleAlarmDown = () => 
+const handleAlarmDown = () =>
   handleRequest(deviceApi.alarmDown, alarmDownForm, '大灯灭/蜂鸣器停请求已发送', alarmDownResult);
 
-const handleAlarmCancel = () => 
+const handleAlarmCancel = () =>
   handleRequest(deviceApi.alarmCancel, alarmCancelForm, '取消报警请求已发送', alarmCancelResult);
 
-const handleAlarmLightFlashing = () => 
+const handleAlarmLightFlashing = () =>
   handleRequest(deviceApi.alarmLightFlashing, alarmLightFlashingForm, '塔灯闪烁请求已发送', alarmLightFlashingResult);
 
-const handleGetAddrStatus = () => 
+const handleGetAddrStatus = () =>
   handleRequest(deviceApi.getAddrStatus, getAddrStatusForm, '获取储位状态请求已发送', getAddrStatusResult);
 
-const handleQueryInitInfo = () => 
+const handleQueryInitInfo = () =>
   handleRequest(deviceApi.queryInitInfo, queryInitInfoForm, '获取初始化配置信息请求已发送', queryInitInfoResult);
+
+// 颜色列表增删
+const addColor = () => {
+  firstBoardInitForm.colors.push({ R: 0, G: 0, B: 0 });
+};
+const removeColor = (idx: number) => {
+  firstBoardInitForm.colors.splice(idx, 1);
+};
+
+// 二级板灯珠数量增删
+const addLedQty = () => {
+  firstBoardInitForm.ledQtyPerSecondBoard.push(0);
+};
+const removeLedQty = (idx: number) => {
+  firstBoardInitForm.ledQtyPerSecondBoard.splice(idx, 1);
+};
+
+// 一级板初始化
+const handleFirstBoardInit = () => {
+  if (!firstBoardInitForm.rackNo) {
+    message.warning('请选择货架编号');
+    return;
+  }
+  if (firstBoardInitForm.colors.length === 0) {
+    message.warning('颜色列表不能为空');
+    return;
+  }
+  const invalidColor = firstBoardInitForm.colors.some(
+    (c) =>
+      c.R < 0 || c.R > 255 ||
+      c.G < 0 || c.G > 255 ||
+      c.B < 0 || c.B > 255
+  );
+  if (invalidColor) {
+    message.warning('颜色值必须在 0~255 之间');
+    return;
+  }
+  if (!/^(\d{1,3}\.){3}\d{1,3}$/.test(firstBoardInitForm.serverIP)) {
+    message.warning('服务器IP格式不正确');
+    return;
+  }
+  if (
+    !firstBoardInitForm.serverPort ||
+    firstBoardInitForm.serverPort <= 0 ||
+    firstBoardInitForm.serverPort > 65535
+  ) {
+    message.warning('服务器端口必须在 1~65535 之间');
+    return;
+  }
+  if (firstBoardInitForm.ledQtyPerSecondBoard.length === 0) {
+    message.warning('二级板灯珠数量列表不能为空');
+    return;
+  }
+  if (firstBoardInitForm.ledQtyPerSecondBoard.some((q) => q < 0 || q > 65535)) {
+    message.warning('单块二级板灯珠数量必须在 0~65535 之间');
+    return;
+  }
+
+  handleRequest(
+    deviceApi.firstBoardInit,
+    firstBoardInitForm,
+    '一级板初始化请求已发送',
+    firstBoardInitResult
+  );
+};
 </script>
 
 <style scoped>
@@ -1106,5 +1273,20 @@ const handleQueryInitInfo = () =>
 
 :deep(.n-divider) {
   margin: 8px 0;
+}
+
+.color-list-wrap,
+.led-qty-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.color-row,
+.led-qty-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 </style>

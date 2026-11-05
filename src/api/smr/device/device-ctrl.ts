@@ -24,6 +24,7 @@ import type {
   CancelDownInductiveShelfRequest,
   AlarmRequest,
   Rack,
+    FirstBoardInitRequest,
 }  from '@/components/Form/index';
 // 通用响应类型
 export interface ResponseEntity<T> {
@@ -200,4 +201,10 @@ export function cancelDownInductiveShelf(data: RequestData<CancelDownInductiveSh
  */
 export function alarm(data: RequestData<AlarmRequest>) {
   return Alova.Post<ResponseEntity<object>>('/deviceCtrl/Alarm', data);
+}
+/**
+ * 一级板初始化
+ */
+export function firstBoardInit(data: RequestData<FirstBoardInitRequest>) {
+  return Alova.Post<ResponseEntity<object>>('/deviceCtrl/FirstBoardInit', data);
 }

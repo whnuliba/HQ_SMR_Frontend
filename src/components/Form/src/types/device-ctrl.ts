@@ -1,6 +1,37 @@
 import { h } from 'vue';
 import { NAvatar, NTag } from 'naive-ui';
 
+
+/**
+ * LED 颜色（G/R/B）
+ */
+export interface LEDColor {
+  /** 绿色 */
+  G: number;
+  /** 红色 */
+  R: number;
+  /** 蓝色 */
+  B: number;
+}
+
+/**
+ * 一级板初始化请求
+ */
+export interface FirstBoardInitRequest {
+  /** 货架编号 */
+  rackNo: string;
+  /** 颜色列表 */
+  colors: LEDColor[];
+  /** 是否启用感应 */
+  isInductive: boolean;
+  /** 服务器 IP */
+  serverIP: string;
+  /** 服务器端口 */
+  serverPort: number;
+  /** 每块二级板的灯珠数量（按板顺序） */
+  ledQtyPerSecondBoard: number[];
+}
+
 /**
  * 货架实体
  */

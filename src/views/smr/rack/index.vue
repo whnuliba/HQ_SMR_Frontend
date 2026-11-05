@@ -149,27 +149,27 @@ const message = useMessage()
         },
       },
     },
-    {
-      field: 'enable',
-      component: 'NSelect',
-      label: '启用状态',
-      componentProps: {
-        placeholder: '请选择类型',
-        options: [
-          {
-            label: '禁用',
-            value: 0,
-          },
-          {
-            label: '启用',
-            value: 1,
-          },
-        ],
-        onUpdateValue: (e: any) => {
-          console.log(e);
-        },
-      },
-    },
+    // {
+    //   field: 'enable',
+    //   component: 'NSelect',
+    //   label: '启用状态',
+    //   componentProps: {
+    //     placeholder: '请选择类型',
+    //     options: [
+    //       {
+    //         label: '禁用',
+    //         value: 0,
+    //       },
+    //       {
+    //         label: '启用',
+    //         value: 1,
+    //       },
+    //     ],
+    //     onUpdateValue: (e: any) => {
+    //       console.log(e);
+    //     },
+    //   },
+    // },
     // {
     //   field: 'createTime',
     //   component: 'NDatePicker',

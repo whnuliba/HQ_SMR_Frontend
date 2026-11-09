@@ -52,7 +52,7 @@ export const columns: BasicColumn<VMaterialData>[] = [
   {
     title: 'PPID',
     key: 'ppid',
-    width: 180,
+    width: 250,
     ellipsis: true,
   },
   {

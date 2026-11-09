@@ -93,7 +93,7 @@ export const columns: BasicColumn<MaterialInfoData>[] = [
   {
     title: 'PPID',
     key: 'ppid',
-    width: 120,
+    width: 250,
   },
   {
     title: '产品料号',

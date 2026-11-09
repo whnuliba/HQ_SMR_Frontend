@@ -68,6 +68,40 @@
           </n-space>
         </template>
       </n-modal>
+
+      <!-- 变更货架 -->
+      <n-modal v-model:show="showChangeModal" :show-icon="false" preset="dialog" title="变更">
+        <n-form
+          :model="changeParams"
+          ref="changeFormRef"
+          label-placement="left"
+          :label-width="100"
+          class="py-4"
+        >
+          <n-form-item label="货架号">
+            <n-input v-model:value="changeParams.rackNo" placeholder="请输入货架号" />
+          </n-form-item>
+          <n-form-item label="IP地址">
+            <n-input v-model:value="changeParams.ip" placeholder="请输入IP地址" />
+          </n-form-item>
+          <n-form-item label="端口">
+            <n-input-number v-model:value="changeParams.port" placeholder="请输入端口" clearable style="width: 100%" />
+          </n-form-item>
+          <n-form-item label="A面数量">
+            <n-input-number v-model:value="changeParams.aSideQty" placeholder="请输入A面数量" clearable style="width: 100%" />
+          </n-form-item>
+          <n-form-item label="B面数量">
+            <n-input-number v-model:value="changeParams.bSideQty" placeholder="请输入B面数量" clearable style="width: 100%" />
+          </n-form-item>
+        </n-form>
+
+        <template #action>
+          <n-space>
+            <n-button @click="() => (showChangeModal = false)">取消</n-button>
+            <n-button type="info" :loading="changeBtnLoading" @click="confirmChange">确定</n-button>
+          </n-space>
+        </template>
+      </n-modal>
     </n-card>
   </n-flex>
 </template>
@@ -76,7 +110,7 @@
   import { h, reactive, ref } from 'vue';
   import { BasicTable, TableAction } from '@/components/Table';
   import { BasicForm, FormSchema, useForm } from '@/components/Form/index';
-  import { getRack,registerRack } from '@/api/smr/rack/rack';
+  import { getRack,registerRack, updateRack } from '@/api/smr/rack/rack';
   import { columns, RackData,RackNodeForm } from './columns';
   import { PlusOutlined } from '@vicons/antd';
   import { useRouter } from 'vue-router';
@@ -213,45 +247,22 @@ const message = useMessage()
       return h(TableAction as any, {
         style: 'button',
         actions: [
+          // {
+          //   label: '删除',
+          //   onClick: handleDelete.bind(null, record),
+          //   // 根据业务控制是否显示 isShow 和 auth 是并且关系
+          //   ifShow: () => {
+          //     return true;
+          //   },
+          // },
           {
-            label: '删除',
-            onClick: handleDelete.bind(null, record),
-            // 根据业务控制是否显示 isShow 和 auth 是并且关系
-            ifShow: () => {
-              return true;
-            },
-            // 根据权限控制是否显示: 有权限，会显示，支持多个
-            auth: ['basic_list'],
-          },
-          {
-            label: '编辑',
-            onClick: handleEdit.bind(null, record),
-            ifShow: () => {
-              return true;
-            },
-            auth: ['basic_list'],
-          },
-        ],
-        dropDownActions: [
-          {
-            label: '启用',
-            key: 'enabled',
-            // 根据业务控制是否显示: 非enable状态的不显示启用按钮
-            ifShow: () => {
-              return true;
-            },
-          },
-          {
-            label: '禁用',
-            key: 'disabled',
+            label: '变更',
+            onClick: handleChange.bind(null, record),
             ifShow: () => {
               return true;
             },
           },
         ],
-        select: (key) => {
-          window['$message'].info(`您点击了，${key} 按钮`);
-        },
       });
     },
   });
@@ -326,10 +337,46 @@ const message = useMessage()
   //   });
   // }
 
-  function handleEdit(record: Recordable) {
-    console.log('点击了编辑', record);
-    router.push({ name: 'basic-info', params: { id: record.id } });
+  // ==================== 变更货架 ====================
+  const showChangeModal = ref(false);
+  const changeBtnLoading = ref(false);
+  const changeFormRef: any = ref(null);
+  const changeParams = reactive<any>({
+    id: '',
+    rackNo: '',
+    ip: '',
+    port: null,
+    aSideQty: null,
+    bSideQty: null,
+  });
+
+  function handleChange(record: RackData) {
+    changeParams.id = record.id;
+    changeParams.rackNo = record.rackNo ?? '';
+    changeParams.ip = record.ip ?? '';
+    changeParams.port = record.port ?? null;
+    changeParams.aSideQty = record.aSideQty ?? null;
+    changeParams.bSideQty = record.bSideQty ?? null;
+    showChangeModal.value = true;
   }
+
+  const confirmChange = async () => {
+    changeBtnLoading.value = true;
+    try {
+      const res = await updateRack({ data: { ...changeParams } });
+      if (res.code === 200 || res.status === 'SUCCESS') {
+        window['$message'].success('变更成功');
+        showChangeModal.value = false;
+        reloadTable();
+      } else {
+        window['$message'].error(res.data?.message || '变更失败');
+      }
+    } catch (error) {
+      window['$message'].error('变更失败');
+    } finally {
+      changeBtnLoading.value = false;
+    }
+  };
 
   function handleDelete(record: Recordable) {
     console.log('点击了删除', record);

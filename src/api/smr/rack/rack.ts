@@ -29,6 +29,21 @@ export function registerRack(params) {
   );
 }
 
+// 变更货架
+export function updateRack(params) {
+  return Alova.Post<BasicFmsResponseModel>(
+    '/rack-node/UpdateRack',
+    {
+      ...params
+    },
+    {
+      meta: {
+        isReturnNativeResponse: true,
+      },
+    }
+  );
+}
+
 export function getLocations(params) {
   return Alova.Post<BasicFmsResponseModel>(
     '/location/list',

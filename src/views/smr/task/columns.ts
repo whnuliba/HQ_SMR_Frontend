@@ -60,7 +60,7 @@ export const columns: BasicColumn<RackTaskData>[] = [
   {
     title: 'ppid',
     key: 'ppid',
-    width: 220,
+     width: 250,
   },
   {
     title: '储位',

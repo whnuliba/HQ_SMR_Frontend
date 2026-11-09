@@ -43,6 +43,7 @@ export const columns: BasicColumn<LocationData>[] = [
   {
     title: 'PPID',
     key: 'ppid',
+    width: 250,
   },
   // {
   //   title: '任务类型',

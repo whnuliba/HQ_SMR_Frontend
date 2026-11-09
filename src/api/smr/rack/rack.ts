@@ -44,6 +44,20 @@ export function updateRack(params) {
   );
 }
 
+export function deleteRack(params) {
+  return Alova.Post<BasicFmsResponseModel>(
+    '/rack-node/delete',
+    {
+      ...params
+    },
+    {
+      meta: {
+        isReturnNativeResponse: true,
+      },
+    }
+  );
+}
+
 export function getLocations(params) {
   return Alova.Post<BasicFmsResponseModel>(
     '/location/list',

@@ -110,7 +110,7 @@
   import { h, reactive, ref } from 'vue';
   import { BasicTable, TableAction } from '@/components/Table';
   import { BasicForm, FormSchema, useForm } from '@/components/Form/index';
-  import { getRack,registerRack, updateRack } from '@/api/smr/rack/rack';
+  import { getRack,registerRack, updateRack,deleteRack } from '@/api/smr/rack/rack';
   import { columns, RackData,RackNodeForm } from './columns';
   import { PlusOutlined } from '@vicons/antd';
   import { useRouter } from 'vue-router';
@@ -247,14 +247,14 @@ const message = useMessage()
       return h(TableAction as any, {
         style: 'button',
         actions: [
-          // {
-          //   label: '删除',
-          //   onClick: handleDelete.bind(null, record),
-          //   // 根据业务控制是否显示 isShow 和 auth 是并且关系
-          //   ifShow: () => {
-          //     return true;
-          //   },
-          // },
+          {
+            label: '删除',
+            onClick: handleDelete.bind(null, record),
+            // 根据业务控制是否显示 isShow 和 auth 是并且关系
+            ifShow: () => {
+              return true;
+            },
+          },
           {
             label: '变更',
             onClick: handleChange.bind(null, record),
@@ -379,7 +379,31 @@ const message = useMessage()
   };
 
   function handleDelete(record: Recordable) {
-    console.log('点击了删除', record);
+    
+  dialog.warning({
+            title: '操作警告',
+            content: '你确定要删除货架吗，删除后不可恢复，必须重建？',
+            positiveText: '确定',
+            negativeText: '取消',
+            draggable: true,
+            onPositiveClick: () => {
+              deleteRack({data:record}).then((res)=>{
+                  const {code}  = res;
+                  let msg = res.message
+                  if(code==200){
+                      message.success('删除成功')
+                         //    window['$message'].info('任务取消成功');
+                  }else{
+                       message.error('删除失败:'+msg)
+                  }
+              }).catch(err=>{
+                     message.success('删除失败')
+              })
+            },
+            onNegativeClick: () => {
+              message.error('取消')
+            }
+          })
     window['$message'].info('点击了删除');
   }
 
